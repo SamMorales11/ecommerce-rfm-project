@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: olist_raw
+    schema: main
+    description: "Data mentah dari Kaggle Olist Dataset"
+    tables:
+      - name: orders
+        meta:
+          external_location: "read_csv_auto('../data/raw/olist_orders_dataset.csv')"
+      - name: order_items
+        meta:
+          external_location: "read_csv_auto('../data/raw/olist_order_items_dataset.csv')"
+      - name: customers
+        meta:
+          external_location: "read_csv_auto('../data/raw/olist_customers_dataset.csv')"
