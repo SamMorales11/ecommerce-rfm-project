@@ -1,0 +1,17 @@
+# Lingkungan Virtual
+.venv/
+__pycache__/
+
+# Data & Database (Jangan di-upload karena berat)
+data/raw/*.csv
+data/*.db
+data/*.db.wal
+
+# dbt Artifacts
+analytics/target/
+analytics/dbt_packages/
+analytics/logs/
+
+# OS files
+.DS_Store
+Thumbs.db

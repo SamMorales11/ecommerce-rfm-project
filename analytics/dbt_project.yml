@@ -1,0 +1,22 @@
+name: 'ecommerce_analytics'
+version: '1.0.0'
+config-version: 2
+
+# Pastikan profile ini sama dengan yang di profiles.yml
+profile: 'ecommerce_rfm'
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+models:
+  ecommerce_analytics:
+    # Konfigurasi materialization default
+    staging:
+      +materialized: view # Staging biasanya view untuk efisiensi
+    intermediate:
+      +materialized: ephemeral # Tidak muncul di DB, hanya sebagai subquery
+    marts:
+      +materialized: table # Marts harus jadi table agar cepat saat di-query BI Tools

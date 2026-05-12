@@ -1,0 +1,10 @@
+# analytics/profiles.yml
+ecommerce_rfm:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '../data/ecommerce.db' # Path ke file database kita
+      extensions:
+        - httpfs
+        - parquet
