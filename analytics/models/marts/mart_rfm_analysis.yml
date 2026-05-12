@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: mart_rfm_analysis
+    description: "Tabel final segmentasi pelanggan Olist menggunakan RFM."
+    columns:
+      - name: customer_unique_id
+        tests:
+          - unique
+          - not_null
+      - name: r_score
+        tests:
+          - accepted_values:
+              values: [1, 2, 3, 4, 5] # Format yang benar untuk dbt terbaru

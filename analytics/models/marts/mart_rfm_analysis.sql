@@ -1,34 +1,47 @@
 -- models/marts/mart_rfm_analysis.sql
 
-with customer_orders as (
-    select * from {{ ref('int_customer_orders') }}
-),
-
--- Mencari tanggal paling baru di seluruh dataset sebagai titik acuan (Current Date)
-reference_date as (
-    select max(purchase_at) as max_date
-    from customer_orders
-),
-
-rfm_calculation as (
+with rfm_raw as (
+    -- Ambil perhitungan dasar yang sudah kita buat tadi
     select
-        c.customer_unique_id,
-        
-        -- Recency: Selisih hari dari transaksi terakhir pelanggan ke tanggal acuan
+        customer_unique_id,
         date_diff(
             'day', 
-            max(c.purchase_at), 
-            (select max_date from reference_date)
+            max(purchase_at), 
+            (select max(purchase_at) from {{ ref('int_customer_orders') }})
         ) as recency_days,
-
-        -- Frequency: Jumlah order_id unik
-        count(distinct c.order_id) as frequency,
-
-        -- Monetary: Total nilai belanja
-        sum(c.total_order_value) as monetary_value
-
-    from customer_orders c
+        count(distinct order_id) as frequency,
+        sum(total_order_value) as monetary_value
+    from {{ ref('int_customer_orders') }}
     group by 1
+),
+
+rfm_scores as (
+    select
+        *,
+        -- Recency: Semakin kecil harinya, semakin bagus (skor 5)
+        ntile(5) over (order by recency_days desc) as r_score,
+        -- Frequency: Semakin banyak order, semakin bagus (skor 5)
+        ntile(5) over (order by frequency asc) as f_score,
+        -- Monetary: Semakin besar belanja, semakin bagus (skor 5)
+        ntile(5) over (order by monetary_value asc) as m_score
+    from rfm_raw
+),
+
+final_segmentation as (
+    select
+        *,
+        (r_score + f_score + m_score) / 3.0 as avg_rfm_score,
+        case
+            when r_score >= 4 and f_score >= 4 and m_score >= 4 then 'Champions'
+            when r_score >= 4 and f_score >= 2 then 'Loyal Customers'
+            when r_score >= 3 and f_score >= 3 then 'Potential Loyalists'
+            when r_score >= 4 and f_score <= 1 then 'New Customers'
+            when r_score >= 3 and r_score <= 4 and f_score <= 1 then 'Promising'
+            when r_score <= 2 and r_score >= 1 and f_score >= 3 then 'At Risk'
+            when r_score <= 1 then 'Hibernating'
+            else 'Others'
+        end as customer_segment
+    from rfm_scores
 )
 
-select * from rfm_calculation
+select * from final_segmentation
