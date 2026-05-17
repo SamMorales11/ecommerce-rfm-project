@@ -18,8 +18,8 @@
  ├── 📂 notebooks/            # Jupyter notebooks for K-Means Clustering & EDA
  ├── 📂 screenshots/          # Documentation images for README
  ├── 📄 rfm_final_export_ml.csv # Final curated dataset with ML cluster labels
- └── 📄 README.md             # Project documentation
-
+ └── 📄 README.md             # Project documentation ##
+```
 
 🚀 Step-by-Step Implementation
 1. Data Transformation (SQL)
