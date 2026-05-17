@@ -19,3 +19,26 @@
  ├── 📂 screenshots/          # Documentation images for README
  ├── 📄 rfm_final_export_ml.csv # Final curated dataset with ML cluster labels
  └── 📄 README.md             # Project documentation
+
+
+🚀 Step-by-Step Implementation
+1. Data Transformation (SQL)
+Aggregated transactional history to extract the three core RFM metrics per customer using optimized DuckDB SQL window functions:
+
+Recency: Days since the customer's last order.
+
+Frequency: Total number of unique orders placed.
+
+Monetary Value: Total amount spent by the customer.
+
+2. Machine Learning Validation (Python)
+To eliminate manual threshold biases, a K-Means clustering algorithm was deployed in Python:
+
+Handled extreme skewness using log-transformations and normalized data with StandardScaler.
+
+Determined optimal clusters using the Elbow Method and Silhouette Analysis.
+
+Appended the mathematical cluster_ml labels back to the dataset for visual validation.
+
+3. Executive Dashboard Design (Tableau)
+Created a modern, card-based interface focused on user interaction and corporate presentation guidelines.
