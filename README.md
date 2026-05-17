@@ -21,7 +21,7 @@
  └── 📄 README.md             # Project documentation ##
 ```
 
-🚀 Step-by-Step Implementation
+## 🚀 Step-by-Step Implementation
 1. Data Transformation (SQL)
 Aggregated transactional history to extract the three core RFM metrics per customer using optimized DuckDB SQL window functions:
 
