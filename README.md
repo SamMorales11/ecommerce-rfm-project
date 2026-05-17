@@ -42,3 +42,8 @@ To eliminate manual threshold biases, a K-Means clustering algorithm was deploye
 
 3. Executive Dashboard Design (Tableau)
 * Created a modern, card-based interface focused on user interaction and corporate presentation guidelines.
+
+## 🖼️ Dashboard Preview & Visual Insights
+1. Executive Summary (BANs)
+![Executive Summary Card](<img width="760" height="205" alt="Screenshot 2026-05-15 085007" src="https://github.com/user-attachments/assets/5df9ac8a-f505-4f60-8ae4-bc1c12a940f9" />
+)
