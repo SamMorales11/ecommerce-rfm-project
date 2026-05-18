@@ -48,3 +48,22 @@ To eliminate manual threshold biases, a K-Means clustering algorithm was deploye
 ![Executive Summary Card]
 <img width="760" height="205" alt="Screenshot 2026-05-15 085007" src="https://github.com/user-attachments/assets/5df9ac8a-f505-4f60-8ae4-bc1c12a940f9" />
 
+* Insight: Displays instant high-level metrics including Total Unique Customers (93,358), Total Revenue (Rp15.4M), and Average Spending per User (Rp165.17).
+
+2. Strategic Customer Distribution (Treemap)
+![Customer Distribution Treemap]
+<img width="947" height="247" alt="Screenshot 2026-05-15 084945" src="https://github.com/user-attachments/assets/5b8c2b23-825e-4329-84c4-4e49e4b6dd40" />
+
+* Insight: Quickly highlights that At Risk and Hibernating customers occupy a significant volume of the base, identifying a critical retention risk for the company.
+
+3. Efficiency & Value Matrix (Dual Axis)
+![Revenue vs Volume Dual Axis]
+<img width="1865" height="312" alt="Screenshot 2026-05-15 084912" src="https://github.com/user-attachments/assets/d775a41a-d134-4c36-a041-88f3c80c9a36" />
+
+* Insight: Validates the efficiency of the Champions segment. While representing a smaller volume of customers (shorter bars), they generate disproportionately high revenue (higher line), confirming their status as core value drivers.
+
+4. Mathematical Cluster Validation (Scatter Plot)
+![K-Means Cluster Scatter Plot]
+<img width="1857" height="281" alt="Screenshot 2026-05-15 084902" src="https://github.com/user-attachments/assets/beb96074-689d-49aa-9cf8-0ff392168b6f" />
+
+* Insight: Showcases how the unsupervised machine learning model separates users in a 2D space based on Recency Days and Monetary Value, removing human classification bias.
