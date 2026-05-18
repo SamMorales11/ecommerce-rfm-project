@@ -67,3 +67,15 @@ To eliminate manual threshold biases, a K-Means clustering algorithm was deploye
 <img width="1857" height="281" alt="Screenshot 2026-05-15 084902" src="https://github.com/user-attachments/assets/beb96074-689d-49aa-9cf8-0ff392168b6f" />
 
 * Insight: Showcases how the unsupervised machine learning model separates users in a 2D space based on Recency Days and Monetary Value, removing human classification bias.
+
+
+## 🔧 How to Run the Project
+Clone this repository to your local machine.
+
+Ensure you have your DuckDB database set up inside the data/ directory.
+
+Run the Jupyter Notebook in notebooks/ to execute the K-Means clustering model and generate rfm_final_export_ml.csv.
+
+Open Tableau, connect to the final CSV file, and load the workspace sheets into your custom dashboard layout.
+
+Enable "Use as Filter" on the Treemap viz to explore segment behavior dynamically.
